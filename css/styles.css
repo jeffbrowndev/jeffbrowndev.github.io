@@ -3,7 +3,7 @@
   --color-text: #ffffff;
   --color-accent: #e64824;
   --font-display: Lato, Arial, Helvetica, sans-serif;
-  --font-label: Bahnschrift, "Arial Narrow", Arial, sans-serif;
+  --font-label: Bahnschrift, Lato, Arial, Helvetica, sans-serif;
   --portfolio-gap: clamp(0.75rem, 1vw, 1.25rem);
   --display-heading-bottom: clamp(1rem, 2vw, 2rem);
   --contact-link-size: clamp(0.9rem, 1.63vw, 1.5rem);
