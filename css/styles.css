@@ -338,10 +338,10 @@ body {
   border-radius: clamp(0.25rem, 0.4vw, 0.45rem);
   background: #111820;
   opacity: 0;
-  transform: translateY(clamp(1.25rem, 3vw, 2.75rem)) scale(0.985);
+  transform: translateY(clamp(0.75rem, 1.5vw, 1.5rem));
   transition:
-    opacity 700ms ease,
-    transform 900ms cubic-bezier(0.16, 1, 0.3, 1),
+    opacity 550ms ease,
+    transform 650ms cubic-bezier(0.16, 1, 0.3, 1),
     border-color 350ms ease;
   transition-delay:
     var(--reveal-delay, 0ms),
@@ -357,7 +357,7 @@ body {
 
 .portfolio-item.is-visible {
   opacity: 1;
-  transform: translateY(0) scale(1);
+  transform: translateY(0);
 }
 
 .portfolio-item img {
@@ -482,28 +482,19 @@ body {
 .portfolio-item[data-project="stickler-research-foundation"] { --project-accent: 115, 138, 110; }
 .portfolio-item[data-project="cvrse"] { --project-accent: 182, 106, 60; }
 
-.portfolio-item:hover img,
 .portfolio-item:focus-within img {
   transform: scale(1.025);
 }
 
-.portfolio-item:hover,
 .portfolio-item:focus-within {
   border-color: rgba(var(--project-accent), 0.58);
 }
 
-.portfolio-item:hover .portfolio-overlay,
 .portfolio-item:focus-within .portfolio-overlay {
   opacity: 1;
   pointer-events: auto;
 }
 
-.portfolio-item:hover .portfolio-overlay__type,
-.portfolio-item:hover .portfolio-overlay__title,
-.portfolio-item:hover .portfolio-overlay__description,
-.portfolio-item:hover .portfolio-overlay__technology,
-.portfolio-item:hover .portfolio-overlay__scope,
-.portfolio-item:hover .portfolio-overlay__cta,
 .portfolio-item:focus-within .portfolio-overlay__type,
 .portfolio-item:focus-within .portfolio-overlay__title,
 .portfolio-item:focus-within .portfolio-overlay__description,
@@ -511,6 +502,30 @@ body {
 .portfolio-item:focus-within .portfolio-overlay__scope,
 .portfolio-item:focus-within .portfolio-overlay__cta {
   transform: translateY(0);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .portfolio-item:hover img {
+    transform: scale(1.025);
+  }
+
+  .portfolio-item:hover {
+    border-color: rgba(var(--project-accent), 0.58);
+  }
+
+  .portfolio-item:hover .portfolio-overlay {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .portfolio-item:hover .portfolio-overlay__type,
+  .portfolio-item:hover .portfolio-overlay__title,
+  .portfolio-item:hover .portfolio-overlay__description,
+  .portfolio-item:hover .portfolio-overlay__technology,
+  .portfolio-item:hover .portfolio-overlay__scope,
+  .portfolio-item:hover .portfolio-overlay__cta {
+    transform: translateY(0);
+  }
 }
 
 .portfolio-item:focus-visible {

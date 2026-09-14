@@ -60,6 +60,16 @@ const displayObserver = new IntersectionObserver(
 displaySections.forEach((section) => displayObserver.observe(section));
 
 const portfolioItems = document.querySelectorAll(".portfolio-item");
+const initiallyVisibleImages = document.querySelectorAll(
+  '.portfolio-item[data-mobile-order="1"] img, .portfolio-item[data-mobile-order="2"] img, .portfolio-item[data-mobile-order="3"] img'
+);
+
+// Warm the decoded image cache before these cards reach the viewport. The
+// matching preload hints in the document head start their downloads earlier.
+initiallyVisibleImages.forEach((image) => {
+  image.decode().catch(() => {});
+});
+
 const portfolioObserver = new IntersectionObserver(
   (entries) => {
     entries.forEach((entry) => {
