@@ -59,33 +59,33 @@ const displayObserver = new IntersectionObserver(
 
 displaySections.forEach((section) => displayObserver.observe(section));
 
-const portfolioItems = document.querySelectorAll(".portfolio-item");
 const initiallyVisibleImages = document.querySelectorAll(
   '.portfolio-item[data-mobile-order="1"] img, .portfolio-item[data-mobile-order="2"] img, .portfolio-item[data-mobile-order="3"] img'
 );
 
 // Warm the decoded image cache before these cards reach the viewport. The
 // matching preload hints in the document head start their downloads earlier.
-initiallyVisibleImages.forEach((image) => {
-  image.decode().catch(() => {});
+initiallyVisibleImages.forEach((image) => image.decode().catch(() => {}));
+
+const touchPortfolioItems = document.querySelectorAll(".portfolio-item");
+const touchInput = window.matchMedia("(hover: none), (pointer: coarse)");
+
+touchPortfolioItems.forEach((item) => {
+  item.addEventListener("click", (event) => {
+    if (!touchInput.matches || event.target.closest("a")) return;
+
+    const willOpen = !item.classList.contains("is-active");
+    touchPortfolioItems.forEach((otherItem) => {
+      otherItem.classList.remove("is-active");
+    });
+    item.classList.toggle("is-active", willOpen);
+  });
 });
 
-const portfolioObserver = new IntersectionObserver(
-  (entries) => {
-    entries.forEach((entry) => {
-      if (!entry.isIntersecting) return;
-
-      const visibleItems = entries.filter((item) => item.isIntersecting);
-      const revealIndex = visibleItems.indexOf(entry);
-      entry.target.style.setProperty("--reveal-delay", `${revealIndex * 90}ms`);
-      entry.target.classList.add("is-visible");
-      portfolioObserver.unobserve(entry.target);
-    });
-  },
-  { threshold: 0.12, rootMargin: "0px 0px -5% 0px" }
-);
-
-portfolioItems.forEach((item) => portfolioObserver.observe(item));
+document.addEventListener("click", (event) => {
+  if (!touchInput.matches || event.target.closest(".portfolio-item")) return;
+  touchPortfolioItems.forEach((item) => item.classList.remove("is-active"));
+});
 
 const aboutSection = document.querySelector(".about");
 const aboutObserver = new IntersectionObserver(
