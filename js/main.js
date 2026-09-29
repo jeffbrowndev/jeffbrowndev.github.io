@@ -60,7 +60,7 @@ const displayObserver = new IntersectionObserver(
 displaySections.forEach((section) => displayObserver.observe(section));
 
 const initiallyVisibleImages = document.querySelectorAll(
-  '.portfolio-item[data-mobile-order="1"] img, .portfolio-item[data-mobile-order="2"] img, .portfolio-item[data-mobile-order="3"] img'
+  '.portfolio-item[data-project="robbie-christmas"] img, .portfolio-item[data-project="scso-jobs"] img, .portfolio-item[data-project="tectonic-audio-labs"] img'
 );
 
 // Warm the decoded image cache before these cards reach the viewport. The

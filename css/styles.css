@@ -168,7 +168,7 @@ body::before {
   margin-top: 2rem !important;
   color: rgba(255, 255, 255, 0.72);
   font-family: var(--font-display);
-  font-size: var(--contact-link-size);
+  font-size: clamp(0.72rem, 1.05vw, 0.95rem);
   letter-spacing: 0;
   white-space: nowrap;
 }
@@ -223,7 +223,7 @@ body::before {
 }
 
 .hero__title {
-  max-width: min(72vw, 52rem);
+  max-width: min(84vw, 70rem);
   margin: clamp(2.5rem, 5.2vh, 4.5rem) 0 0 3.16vw;
   font-family: var(--font-display);
   font-size: clamp(3.5rem, 5.35vw, 6.5rem);
@@ -705,6 +705,8 @@ body::before {
 
 .footer-meta ul {
   display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: 0.7rem;
   margin: 0;
   padding: 0;
@@ -752,7 +754,7 @@ body::before {
     max-width: 100%;
     margin-top: clamp(2.5rem, 7vh, 4rem);
     margin-left: 0;
-    font-size: clamp(1.45rem, 9vw, 4.5rem);
+    font-size: clamp(1.45rem, 7.8vw, 4.5rem);
     line-height: 1.16;
   }
 
@@ -787,6 +789,17 @@ body::before {
   .portfolio-item[data-mobile-order="7"] { order: 7; }
   .portfolio-item[data-mobile-order="8"] { order: 8; }
   .portfolio-item[data-mobile-order="9"] { order: 9; }
+
+  /* Preserve the portfolio's original mobile sequence. */
+  .portfolio-item[data-project="robbie-christmas"] { order: 1; }
+  .portfolio-item[data-project="scso-jobs"] { order: 2; }
+  .portfolio-item[data-project="tectonic-audio-labs"] { order: 3; }
+  .portfolio-item[data-project="opus-webworks"] { order: 4; }
+  .portfolio-item[data-project="whale-scout"] { order: 5; }
+  .portfolio-item[data-project="247-restoration-pros"] { order: 6; }
+  .portfolio-item[data-project="cascade-kitchen-bath"] { order: 7; }
+  .portfolio-item[data-project="stickler-research-foundation"] { order: 8; }
+  .portfolio-item[data-project="cvrse"] { order: 9; }
 
   .portfolio-overlay {
     padding-block: clamp(1rem, 4vw, 1.4rem);
